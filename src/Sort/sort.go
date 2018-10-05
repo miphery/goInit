@@ -1,6 +1,7 @@
 package Sort
 
 import "../Tool"
+
 /*
 选择后，交换值
 */
@@ -53,7 +54,7 @@ func Bubble(x []int) []int {
 				canbreak = false
 			}
 		}
-		if canbreak  {
+		if canbreak {
 			break
 		}
 	}
@@ -82,23 +83,23 @@ func Insert(x []int) []int {
 /*
 快速排序
 */
-func Quick(x [] int) [] int{
+func Quick(x []int) []int {
 	current := x[0]
-	len := len(x);
-	if(len <= 1) {
-		return x;
+	len := len(x)
+	if len <= 1 {
+		return x
 
 	}
-	var left, right [] int
-	for i:=1; i < len;i++  {
-		if(x[i] < current){
+	var left, right []int
+	for i := 1; i < len; i++ {
+		if x[i] < current {
 			left = append(left, x[i])
-		}else{
+		} else {
 			right = append(right, x[i])
 		}
 	}
 	left = append(left, current)
-	return Tool.Merge(Quick(left), Quick(right));
-c := Tool.CommonFunc{}
-c.Merge(Quick(left), Quick(right))
+	return Tool.Merge(Quick(left), Quick(right))
+	//c := Tool.CommonFunc{}
+	//c.Merge(Quick(left), Quick(right))
 }
