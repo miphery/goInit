@@ -1,0 +1,2 @@
+# goInit
+go初学
