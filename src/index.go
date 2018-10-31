@@ -4,6 +4,7 @@ import (
 	S "./Sort"
 	"./Tool"
 	"fmt"
+	"reflect"
 	"time"
 )
 
@@ -43,10 +44,11 @@ func main() {
 	t1 := time.Now()
 	fmt.Print("快速排序：")
 	var numbersInterface []interface{}
-	for i := 1; i < len(numbers); i++ {
+	for i := 0; i < len(numbers); i++ {
 		numbersInterface = append(numbersInterface, numbers[i] )
 	}
-	numbers = S.Quick(numbersInterface)
-	Tool.PrintSlice(numbers)
+	fmt.Printf("type =%v left:=%v\n",reflect.TypeOf(numbersInterface), numbersInterface)
+	numbersInterface = S.Quick(numbersInterface)
+	Tool.PrintInterfaceSlice(numbersInterface)
 	Tool.PrintTimeCost(t1)
 }

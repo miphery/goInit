@@ -1,7 +1,8 @@
 package Sort
 
-import "../Tool"
-
+import (
+	"../Tool"
+)
 /*
 选择后，交换值
 */
@@ -84,15 +85,15 @@ func Insert(x []int) []int {
 快速排序
 */
 func Quick(x []interface{}) []interface{} {
-	current := x[0]
 	length := len(x)
 	if length <= 1 {
 		return x
-
 	}
+	current := x[0]
 	var left, right []interface{}
+
 	for i := 1; i < length; i++ {
-		if x[i].(float32) < current.(float32) {
+		if Tool.ToStr(x[i]) < Tool.ToStr(current) {
 			left = append(left, x[i])
 		} else {
 			right = append(right, x[i])
@@ -100,7 +101,9 @@ func Quick(x []interface{}) []interface{} {
 	}
 	left = append(left, current)
 	//return Tool.Merge(Quick(left), Quick(right))
-	return Tool.CommonFunc.Merge( Quick(left), Quick(right))
+	left = Quick(left)
+	right = Quick(right)
+	return Tool.Merge( left, right)
 	/*ll := len(Quick(left))
 	var l []interface{}
 	for li := 0;li < ll ; li++ {
