@@ -37,7 +37,7 @@ type CommonFunc struct{}
 
 var commonFunc CommonFunc
 
-func (c *CommonFunc) Merge(s ...[]interface{}) (slice []interface{}) {
+func (c CommonFunc) Merge(s ...[]interface{}) (slice []interface{}) {
 	switch len(s) {
 	case 0:
 		break
