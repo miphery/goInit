@@ -83,23 +83,41 @@ func Insert(x []int) []int {
 /*
 快速排序
 */
-func Quick(x []int) []int {
+func Quick(x []interface{}) []interface{} {
 	current := x[0]
-	len := len(x)
-	if len <= 1 {
+	length := len(x)
+	if length <= 1 {
 		return x
 
 	}
-	var left, right []int
-	for i := 1; i < len; i++ {
-		if x[i] < current {
+	var left, right []interface{}
+	for i := 1; i < length; i++ {
+		if x[i].(float32) < current.(float32) {
 			left = append(left, x[i])
 		} else {
 			right = append(right, x[i])
 		}
 	}
 	left = append(left, current)
-	return Tool.Merge(Quick(left), Quick(right))
-	//c := Tool.CommonFunc{}
-	//c.Merge(Quick(left), Quick(right))
+	//return Tool.Merge(Quick(left), Quick(right))
+	return Tool.CommonFunc.Merge( Quick(left), Quick(right))
+	/*ll := len(Quick(left))
+	var l []interface{}
+	for li := 0;li < ll ; li++ {
+		l = append(l, left[li])
+	}
+	rl := len(Quick(right))
+	var r []interface{}
+	for ri := 0;ri < rl ; ri++ {
+		r = append(r, right[ri])
+	}
+	res := c.Merge( l, r)
+
+
+	resl := len(res)
+	var result []int
+	for resi := 0;resi < resl ; resi++  {
+		result = append(result, res[resi].(int))
+	}
+	return result*/
 }

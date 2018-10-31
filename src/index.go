@@ -11,7 +11,7 @@ func main() {
 	fmt.Println("Hello, World!")
 	numbers := []int{33, 22, 77, 44, 11, 99, 66, 55, 88}
 	Tool.PrintSlice(numbers)
-	//选择排序1
+/*	//选择排序1
 	t1 := time.Now()
 	fmt.Print("选择排序：")
 	numbers = S.Select1(numbers)
@@ -37,12 +37,16 @@ func main() {
 	fmt.Print("插入排序：")
 	numbers = S.Insert(numbers)
 	Tool.PrintSlice(numbers)
-	Tool.PrintTimeCost(t1)
+	Tool.PrintTimeCost(t1)*/
 
 	//快速排序
-	t1 = time.Now()
+	t1 := time.Now()
 	fmt.Print("快速排序：")
-	numbers = S.Quick(numbers)
+	var numbersInterface []interface{}
+	for i := 1; i < len(numbers); i++ {
+		numbersInterface = append(numbersInterface, numbers[i] )
+	}
+	numbers = S.Quick(numbersInterface)
 	Tool.PrintSlice(numbers)
 	Tool.PrintTimeCost(t1)
 }
